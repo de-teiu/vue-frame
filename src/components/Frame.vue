@@ -1,7 +1,7 @@
 <template>
   <div class="frame">
-    <left-frame :style="{'width':'200px'}"></left-frame>
-    <right-frame :style="{'flex-grow':'1'}"></right-frame>
+    <left-frame v-bind:width="200"></left-frame>
+    <right-frame></right-frame>
   </div>
 </template>
 

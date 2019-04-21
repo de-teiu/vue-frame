@@ -13,5 +13,6 @@ export default {
 <style scoped>
 .right-frame {
   background-color: blue;
+  flex-grow: 1;
 }
 </style>

@@ -1,30 +1,38 @@
 <template>
-  <div class="left-frame">
-    <div class="left-frame-content">left</div>
-    <div
-      class="frame-border"
-      @mousedown="startResizeFrame()"
-      @mouseup="endResizeFrame()"
-      @mousemove="resizeFrame()"
-    ></div>
+  <div
+    class="left-frame"
+    @mousemove="resizeFrame"
+    @mouseup="endResizeFrame"
+    v-bind:style="{width:width + 'px'}"
+  >
+    <div class="left-frame-content">{{isDragged}}</div>
+    <div class="frame-border" @mousedown="startResizeFrame"></div>
   </div>
 </template>
 
 <script>
 export default {
-  data: () => {
+  props: {
+    width: Number
+  },
+
+  data() {
     return {
       isDragged: false
     };
   },
   methods: {
-    startResizeFrame: () => {
-      isDragged = true;
+    startResizeFrame() {
+      this.isDragged = true;
     },
-    endResizeFrame: () => {
-      isDragged = false;
+    endResizeFrame() {
+      this.isDragged = false;
     },
-    resizeFrame: () => {}
+    resizeFrame(event) {
+      if (this.isDragged) {
+        this.width = event.clientX + 10;
+      }
+    }
   }
 };
 </script>
