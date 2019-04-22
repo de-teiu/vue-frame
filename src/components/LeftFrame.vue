@@ -1,12 +1,7 @@
 <template>
-  <div
-    class="left-frame"
-    @mousemove="resizeFrame"
-    @mouseup="endResizeFrame"
-    v-bind:style="{width:width + 'px'}"
-  >
-    <div class="left-frame-content">{{isDragged}}</div>
-    <div class="frame-border" @mousedown="startResizeFrame"></div>
+  <div class="left-frame" v-bind:style="{width:width + 'px'}">
+    <div class="left-frame-content">ひだり</div>
+    <div class="frame-border" @mousedown="$emit('startResize')"></div>
   </div>
 </template>
 
@@ -14,41 +9,29 @@
 export default {
   props: {
     width: Number
-  },
-
-  data() {
-    return {
-      isDragged: false
-    };
-  },
-  methods: {
-    startResizeFrame() {
-      this.isDragged = true;
-    },
-    endResizeFrame() {
-      this.isDragged = false;
-    },
-    resizeFrame(event) {
-      if (this.isDragged) {
-        this.width = event.clientX + 10;
-      }
-    }
   }
 };
 </script>
 
 <style scoped>
 .left-frame {
-  background-color: red;
+  background-color: rgb(240, 240, 255);
   display: flex;
 }
 
 .left-frame-content {
   flex-grow: 1;
+  padding: 10px;
 }
 
 .frame-border {
-  width: 10px;
-  background-color: gray;
+  width: 3px;
+  background-color: rgb(208, 208, 208);
+  border-left: solid 0.5px rgb(170, 170, 170);
+  border-right: solid 0.5px black;
+}
+
+.frame-border:hover {
+  cursor: col-resize;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="right-frame">right</div>
+  <div class="right-frame">みっぎ</div>
 </template>
 
 <script>
@@ -12,7 +12,8 @@ export default {
 
 <style scoped>
 .right-frame {
-  background-color: blue;
+  background-color: white;
   flex-grow: 1;
+  padding: 10px;
 }
 </style>
