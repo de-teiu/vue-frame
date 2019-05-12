@@ -14,6 +14,9 @@
 import LeftFrame from "./LeftFrame.vue";
 import RightFrame from "./RightFrame.vue";
 
+const LEFT_FRAME_MIN_WIDTH = 45;
+const FRAME_ADJUSTED_SETTING = 2;
+
 export default {
   components: {
     LeftFrame,
@@ -30,8 +33,16 @@ export default {
       this.isDragged = true;
     },
     resizeFrame(event) {
+      if (event.buttons === 0) {
+        this.endResizeFrame();
+        return;
+      }
       if (this.isDragged) {
-        this.leftWidth = event.clientX + 2;
+        if (event.clientX + FRAME_ADJUSTED_SETTING < LEFT_FRAME_MIN_WIDTH) {
+          this.leftWidth = LEFT_FRAME_MIN_WIDTH;
+          return;
+        }
+        this.leftWidth = event.clientX + FRAME_ADJUSTED_SETTING;
       }
     },
     endResizeFrame() {

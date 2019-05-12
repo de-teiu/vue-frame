@@ -1,6 +1,6 @@
 <template>
   <div class="left-frame" v-bind:style="{width:width + 'px'}">
-    <div class="left-frame-content">ひだり</div>
+    <div class="left-frame-content">ヒダリー</div>
     <div class="frame-border" @mousedown="$emit('startResize')"></div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
 
 .left-frame-content {
   flex-grow: 1;
-  padding: 10px;
+  padding-left: 10px;
 }
 
 .frame-border {
